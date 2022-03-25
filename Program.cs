@@ -11,6 +11,7 @@ namespace Employee_Payroll_ADO.NET
         public static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Employee Payroll Database");
+            EmployeePayrollDatabase.Create_Database();
         }
     }
 }
