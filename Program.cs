@@ -12,7 +12,7 @@ namespace Employee_Payroll_ADO.NET
         {
             Console.WriteLine("Welcome to Employee Payroll Database");
             EmployeePayrollDatabase employeePayrollDatabase = new EmployeePayrollDatabase();
-            employeePayrollDatabase.GetAllEmployeeRecords();
+            //employeePayrollDatabase.GetAllEmployeeRecords();
             Employee employee = new Employee
             {
                 employeeName = "RamSingh",
@@ -28,6 +28,13 @@ namespace Employee_Payroll_ADO.NET
                 departmentSelect = 1,
             };
             //employeePayrollDatabase.AddEmployeeToDatabase(employee);
+            Employee employee1 = new Employee
+            {
+                employeeName = "RamSingh",
+                employeeID = 5,
+                basicPay = 3000000
+            };
+            employeePayrollDatabase.UpdateSalaryofEmployee(employee1);
         }
     }
 }

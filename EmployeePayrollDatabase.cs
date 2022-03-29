@@ -105,5 +105,33 @@ namespace Employee_Payroll_ADO.NET
                 conn.Close();
             }
         }
+        public void UpdateSalaryofEmployee(Employee employee)
+        {
+            try
+            {
+                SqlCommand command = new SqlCommand("spUpdateEmployeeSalary", conn)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                command.Parameters.AddWithValue("@EmployeeID", employee.employeeID);
+                command.Parameters.AddWithValue("@BasicPay", employee.basicPay);
+                command.Parameters.AddWithValue("@EmployeeName", employee.employeeName);
+                conn.Open();
+                var result = command.ExecuteNonQuery();
+                if (result != 0)
+                {
+                    Console.WriteLine("Record updated successfully");
+                }
+                else
+                {
+                    Console.WriteLine("Record not updated successfully");
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine (ex.Message);
+            }
+            finally { conn.Close(); }
+        }
     }
 }
