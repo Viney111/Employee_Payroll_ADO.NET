@@ -13,6 +13,12 @@ namespace Employee_Payroll_ADO.NET
         {
             Console.WriteLine("Welcome to Employee Payroll Database");
             EmployeePayrollDatabase employeePayrollDatabase = new EmployeePayrollDatabase();
+            string masterQuery = @"SELECT EmployeeID,EmployeeName,Gender,CompanyName,DepartmentName,PhoneNo,EmployeeAddress,StartDate,BasicPay,Deductions,TaxablePay,IncomeTax,NetPay
+                                    FROM CompanyTable
+                                    INNER JOIN EmployeeTable ON CompanyTable.CompanyID = EmployeeTable.CompanySelect
+                                    INNER JOIN PayrollTable ON PayrollTable.EmployeeSelect = EmployeeTable.EmployeeID
+                                    INNER JOIN EmployeeDepartmentTable ON EmployeeDepartmentTable.EmployeeSelect = EmployeeTable.EmployeeID
+                                    INNER JOIN DepartmentTable ON DepartmentTable.DepartmentID = EmployeeDepartmentTable.DepartmentSelect";
             Console.WriteLine("Enter the choice in the ADO.NET Program");
             int choice = Convert.ToInt32(Console.ReadLine());
             switch (choice)
@@ -45,6 +51,11 @@ namespace Employee_Payroll_ADO.NET
                         basicPay = 3000000
                     };
                     employeePayrollDatabase.UpdateSalaryofEmployee(employee1);
+                    break;
+                case 4:
+                    Console.WriteLine("Enter the name of Employee whose data you want to retrieve");
+                    string enteredName = Console.ReadLine();
+                    employeePayrollDatabase.GetAllEmployeesWithDataAdapter(masterQuery, enteredName);
                     break;
                 case 5:
                     string dateQuery = @"SELECT EmployeeID,EmployeeName,Gender,CompanyName,DepartmentName,PhoneNo,EmployeeAddress,StartDate,BasicPay,Deductions,TaxablePay,IncomeTax,NetPay

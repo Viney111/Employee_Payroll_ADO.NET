@@ -136,7 +136,7 @@ namespace Employee_Payroll_ADO.NET
             finally { conn.Close(); }
         }
         //UC5 & UC6 Fetching records from Database as per supplied Query from Program.CS Fie.
-        public void GetAllEmployeesWithDataAdapter(string query)
+        public void GetAllEmployeesWithDataAdapter(string query,string name = null)
         {
             try
             {
@@ -187,11 +187,21 @@ namespace Employee_Payroll_ADO.NET
                             Console.WriteLine(dataRow["CountSalary"] + ", " + dataRow["Gender"]);
                         }
                     }
+                    else if (name != null)
+                    {
+                        foreach (DataRow dataRow in dataSet.Tables[0].Rows)
+                        {
+                            if(((string)dataRow["EmployeeName"]).ToUpper() == name.ToUpper())
+                            {
+                                Console.WriteLine(dataRow["EmployeeID"] + ", " + dataRow["EmployeeName"] + ", "  + dataRow["StartDate"] + ", " + dataRow["Gender"] + ", " + dataRow["PhoneNo"] + ", " + dataRow["EmployeeAddress"] + ", " + dataRow["DepartmentName"] + ", " + dataRow["BasicPay"] + ", " + dataRow["Deductions"] + ", " + dataRow["TaxablePay"] + ", " + dataRow["IncomeTax"] + ", " + dataRow["NetPay"]);
+                            }
+                        }
+                    }
                     else
                     {
                         foreach (DataRow dataRow in dataSet.Tables[0].Rows)
                         {
-                            Console.WriteLine(dataRow["EmployeeID"] + ", " + dataRow["EmployeeName"] + ", " + ", " + dataRow["StartDate"] + ", " + dataRow["Gender"] + ", " + dataRow["PhoneNo"] + ", " + dataRow["EmployeeAddress"] + ", " + dataRow["DepartmentName"] + ", " + dataRow["BasicPay"] + ", " + dataRow["Deductions"] + ", " + dataRow["TaxablePay"] + ", " + dataRow["IncomeTax"] + ", " + dataRow["NetPay"]);
+                            Console.WriteLine(dataRow["EmployeeID"] + ", " + dataRow["EmployeeName"] + ", " + dataRow["StartDate"] + ", " + dataRow["Gender"] + ", " + dataRow["PhoneNo"] + ", " + dataRow["EmployeeAddress"] + ", " + dataRow["DepartmentName"] + ", " + dataRow["BasicPay"] + ", " + dataRow["Deductions"] + ", " + dataRow["TaxablePay"] + ", " + dataRow["IncomeTax"] + ", " + dataRow["NetPay"]);
                         }
                     }
                 }
