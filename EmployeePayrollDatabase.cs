@@ -10,6 +10,7 @@ namespace Employee_Payroll_ADO.NET
     {
         public static string connectionString = @"Server=LAPTOP-IUMGL5A5;Database=payroll_service;User ID=LAPTOP-IUMGL5A5\Kashish Manchanda;Trusted_Connection=True";
         SqlConnection conn = new SqlConnection(connectionString);
+        //UC1 & UC2 (Connectinf to database & Fetching records from Database)
         public void GetAllEmployeeRecords()
         {
             SqlDataReader reader = default;
@@ -65,6 +66,7 @@ namespace Employee_Payroll_ADO.NET
                 this.conn.Close();
             }
         }
+        //UC7 & UC8 Adding Employee into Payroll Table
         public void AddEmployeeToDatabase(Employee employee)
         {
             try
@@ -104,6 +106,7 @@ namespace Employee_Payroll_ADO.NET
                 conn.Close();
             }
         }
+        //UC3 & UC4 Updating the salary of Employee through stored Procedure
         public void UpdateSalaryofEmployee(Employee employee)
         {
             try
@@ -132,6 +135,7 @@ namespace Employee_Payroll_ADO.NET
             }
             finally { conn.Close(); }
         }
+        //UC5 & UC6 Fetching records from Database as per supplied Query from Program.CS Fie.
         public void GetAllEmployeesWithDataAdapter(string query)
         {
             try
