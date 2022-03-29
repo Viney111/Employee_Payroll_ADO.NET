@@ -87,6 +87,9 @@ namespace Employee_Payroll_ADO.NET
                     };
                     employeePayrollDatabase.AddEmployeeToDatabase(employee);
                     break;
+                case 12:
+                    employeePayrollDatabase.DeleteRecordOfEmployee("Viney");
+                    break;
             }
         }
 

@@ -211,5 +211,32 @@ namespace Employee_Payroll_ADO.NET
                 throw new Exception(ex.Message);
             }
         }
+        //UC12 To delete Employee Record
+        public void DeleteRecordOfEmployee(string name)
+        {
+            try
+            {
+                SqlCommand command = new SqlCommand("spDeleteEmployee", conn)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                command.Parameters.AddWithValue("@EmployeeName", name);
+                conn.Open();
+                var result = command.ExecuteNonQuery();
+                if (result != 0)
+                {
+                    Console.WriteLine("Record deleted successfully");
+                }
+                else
+                {
+                    Console.WriteLine("Record not deleted");
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally { conn.Close(); }
+        }
     }
 }
