@@ -133,5 +133,27 @@ namespace Employee_Payroll_ADO.NET
             }
             finally { conn.Close(); }
         }
+        public void GetAllEmployeesWithDataAdapter(string query)
+        {
+            try
+            {
+                DataSet dataSet = new DataSet();
+                SqlConnection connection;
+                using (connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                    adapter.Fill(dataSet);
+                    foreach (DataRow dataRow in dataSet.Tables[0].Rows)
+                    {
+                        Console.WriteLine(dataRow["EmployeeID"] + ", " + dataRow["EmployeeName"] + ", " + ", " + dataRow["StartDate"] + ", " + dataRow["Gender"] + ", " + dataRow["PhoneNo"] + ", " + dataRow["EmployeeAddress"] + ", " + dataRow["DepartmentName"] + ", " + dataRow["BasicPay"] + ", " + dataRow["Deductions"] + ", " + dataRow["TaxablePay"] + ", " + dataRow["IncomeTax"] + ", " + dataRow["NetPay"]);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }
