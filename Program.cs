@@ -23,25 +23,8 @@ namespace Employee_Payroll_ADO.NET
             int choice = Convert.ToInt32(Console.ReadLine());
             switch (choice)
             {
-                case 1:
-                    employeePayrollDatabase.GetAllEmployeeRecords();
-                    break;
                 case 2:
-                    Employee employee = new Employee
-                    {
-                        employeeName = "RamSingh",
-                        gender = "M",
-                        phoneNo = 9991661664,
-                        employeeAddress = "VPO Kotputli, Rajasthan",
-                        startDate = DateTime.Now,
-                        basicPay = 1200000,
-                        deductions = 200000,
-                        incomeTax = 100000,
-                        companySelect = 1,
-                        employeeSelect = 5,
-                        departmentSelect = 1,
-                    };
-                    employeePayrollDatabase.AddEmployeeToDatabase(employee);
+                    employeePayrollDatabase.GetAllEmployeeRecords();
                     break;
                 case 3:
                     Employee employee1 = new Employee
@@ -86,6 +69,23 @@ namespace Employee_Payroll_ADO.NET
                     employeePayrollDatabase.GetAllEmployeesWithDataAdapter(maxquery);
                     employeePayrollDatabase.GetAllEmployeesWithDataAdapter(minquery);
                     employeePayrollDatabase.GetAllEmployeesWithDataAdapter(countquery);
+                    break;
+                case 7:
+                    Employee employee = new Employee
+                    {
+                        employeeName = "RamSingh",
+                        gender = "M",
+                        phoneNo = 9991661664,
+                        employeeAddress = "VPO Kotputli, Rajasthan",
+                        startDate = DateTime.Now,
+                        basicPay = 1200000,
+                        deductions = 200000,
+                        incomeTax = 100000,
+                        companySelect = 1,
+                        employeeSelect = 5,
+                        departmentSelect = 1,
+                    };
+                    employeePayrollDatabase.AddEmployeeToDatabase(employee);
                     break;
             }
         }
